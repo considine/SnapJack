@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    tools:context="com.example.johnpconsidine.snapjack.SignupActivity"
+    android:background="@drawable/bg_gradient">
+
+    <EditText
+        android:layout_marginTop="146dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailField"
+        android:layout_alignParentTop="true"
+        android:background="#ffffffff"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:hint="@string/emailAddress"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/usernameText"
+        android:layout_below="@+id/emailField"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffffff"
+        android:textSize="20dp"
+        android:hint="@string/username_hint"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordText"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/usernameText"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffffff"
+        android:textSize="20dp"
+        android:hint="@string/passwordHint"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:id="@+id/passwordText2"
+        android:layout_below="@+id/passwordText"
+        android:background="#ffffffff"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:hint="@string/confirmPassword"/>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up!"
+        android:id="@+id/signupButton"
+        android:layout_below="@+id/passwordText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up for SnapJack"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/emailField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:textSize="20dp"/>
+
+</RelativeLayout>
