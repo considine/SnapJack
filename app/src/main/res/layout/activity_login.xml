@@ -8,7 +8,8 @@
     android:fitsSystemWindows="true"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context="com.example.johnpconsidine.snapjack.LoginActivity">
+    tools:context="com.example.johnpconsidine.snapjack.LoginActivity"
+    android:background="@drawable/bg_gradient">
 
     <EditText
         android:layout_width="match_parent"

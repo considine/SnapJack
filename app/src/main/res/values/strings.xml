@@ -7,4 +7,9 @@
     <string name="title_activity_signup">SignupActivity</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="emailAddress">email address</string>
+    <string name="signup_error">Please make sure you enter a username, password, and email address</string>
+    <string name="signup_error_title">Oops!</string>
+    <string name="login_error">Please make sure you enter a username, password</string>
+    <string name="login_error_title">Oops!</string>
+    <string name="menu_logout_label">logout</string>
 </resources>
