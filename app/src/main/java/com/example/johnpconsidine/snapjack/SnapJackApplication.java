@@ -1,11 +1,9 @@
 package com.example.johnpconsidine.snapjack;
 
 import android.app.Application;
-import android.widget.Button;
-import android.widget.EditText;
+import android.support.v4.view.ViewPager;
 
 import com.parse.Parse;
-import com.parse.ParseObject;
 
 /**
  * Created by johnpconsidine on 10/30/15.
