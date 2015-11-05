@@ -112,18 +112,13 @@ public class EditFriendsActivity extends ListActivity {
 
         if (getListView().isItemChecked(position)) {
             // add friend
-            toggleFriend(position,true);
-        }
-
-    }
-
-    private void toggleFriend(int position, boolean addRemove) {
-        if (addRemove) {
             mFriendsRelation.add(mUsers.get(position));
         }
-        else {
+
+        else  {
             mFriendsRelation.remove(mUsers.get(position));
         }
+
         mCurrentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

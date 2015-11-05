@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
@@ -43,10 +44,15 @@ public class FriendsFragment extends ListFragment {
 
         mCurrentUser = ParseUser.getCurrentUser();
         mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
-        mFriendsRelation.getQuery().findInBackground(new FindCallback<ParseUser>() {
+
+        getActivity().setProgressBarIndeterminateVisibility(true);
+        ParseQuery<ParseUser> query = mFriendsRelation.getQuery();
+        query.addAscendingOrder(ParseConstants.KEY_USERNAME);;
+        query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> friends, ParseException e) {
-                if(e==null) {
+                getActivity().setProgressBarIndeterminateVisibility(false);
+                if (e == null) {
                     mFriends = friends;
                     String[] usernames = new String[mFriends.size()];
                     int i = 0;
@@ -59,8 +65,7 @@ public class FriendsFragment extends ListFragment {
                             android.R.layout.simple_list_item_1,
                             usernames);
                     setListAdapter(adapter);
-                }
-                else {
+                } else {
 
                 }
 

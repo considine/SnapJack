@@ -16,8 +16,26 @@
     <string name="title_activity_edit_friends">EditFriendsActivity</string>
     <string name="error_title">We\'re Sorry</string>
     <string-array name="menu_items">
-        <item>Edit Friends</item>
+        <item name="edit_friends">Edit Friends</item>
+        <item name="logout">Logout</item>
+        <item name="send_dick">Send Dick Pic</item>
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open_nav_drawer"> open </string>
+    <string name="close_nav_drawer"> close </string>
     <string name="empty_friends_label"> EMPTY </string>
+    <string name="external_storage_error"> Error with your external storage</string>
+    <string name="menu_camera_label"> Camera </string>
+    <string name="general_error">general error</string>
+    <string name="error_opening_file">there was an error opening the file</string>
+    <string name="file_to_large">The selected file is too large. Select a smaller file</string>
+    <string name="banned">You have been banned from the app for 24 hours</string>
+    <string-array name="camera_choices">
+        <item> take picture</item>
+        <item> take video</item>
+        <item> choose picture</item>
+        <item> choose video</item>
+    </string-array>
+    <string name="title_activity_recipients">RecipientsActivity</string>
+    <string name="choose_friends">Choose Some Friends</string>
 </resources>
