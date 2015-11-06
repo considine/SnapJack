@@ -8,18 +8,22 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.johnpconsidine.snapjack.RecipientsActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:minHeight="?android:attr/actionBarSize"
+        android:id="@+id/recipientsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient">
+
+    </android.support.v7.widget.Toolbar>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:id="@android:id/list"
+        android:layout_below="@+id/recipientsToolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/recipientsList"/>
+        android:layout_alignParentStart="true"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_friends"
-        />
+
 </RelativeLayout>

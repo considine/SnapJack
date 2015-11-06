@@ -2,9 +2,12 @@ package com.example.johnpconsidine.snapjack;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -13,10 +16,12 @@ import android.widget.ListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipientsActivity extends ListActivity implements AdapterView.OnClickListener {
@@ -26,6 +31,8 @@ public class RecipientsActivity extends ListActivity implements AdapterView.OnCl
     protected ParseUser mCurrentUser;
     public static final String TAG = RecipientsActivity.class.getSimpleName();
     private Toolbar mToolbar;
+    private Drawable toolIcon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +46,21 @@ public class RecipientsActivity extends ListActivity implements AdapterView.OnCl
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setNavigationIcon(R.drawable.ic_drawer);
+
+        mToolbar = (Toolbar) findViewById(R.id.recipientsToolbar);
+        mToolbar.setTitle("Choose Some Friends!");
+        mToolbar.setNavigationIcon(R.drawable.ic_action_send_now);
+       toolIcon = mToolbar.getNavigationIcon();
 
 
+    }
 
+    //INFLATE MENU
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_recipients, menu);
+        return true;
     }
 
     @Override
@@ -60,7 +77,7 @@ public class RecipientsActivity extends ListActivity implements AdapterView.OnCl
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> friends, ParseException e) {
-               setProgressBarIndeterminateVisibility(false);
+                setProgressBarIndeterminateVisibility(false);
                 if (e == null) {
                     mFriends = friends;
                     String[] usernames = new String[mFriends.size()];
@@ -94,5 +111,44 @@ public class RecipientsActivity extends ListActivity implements AdapterView.OnCl
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "mellamoector");
+        switch (item.getItemId()) {
+
+            case R.id.send:
+                ParseObject message = createMessage();
+                send(message);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void send(ParseObject message) {
+
+    }
+
+    private ParseObject createMessage() {
+        ParseObject message = new ParseObject(ParseConstants.CLASS_MESSAGES);
+        message.put(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
+        message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
+        message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
+        return null;
+    }
+
+    protected ArrayList<String> getRecipientIds() {
+        ArrayList<String> recipientsIds = new ArrayList<String>();
+        for (int i = 0; i < getListView().getCount(); i++) {
+            if (getListView().isItemChecked(i))  //recipient
+            {
+                recipientsIds.add(mFriends.get(i).getObjectId());
+            }
+            return recipientsIds;
+        }
+
+        return null;
     }
 }

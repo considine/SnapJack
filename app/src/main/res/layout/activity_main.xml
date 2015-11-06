@@ -29,7 +29,7 @@
 
 
         <ListView
-            android:background="#303030"
+            android:background="#ffffffff"
             android:divider="@null"
             android:layout_width="240dp"
             android:entries="@array/menu_items"
