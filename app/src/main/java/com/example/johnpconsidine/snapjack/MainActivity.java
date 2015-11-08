@@ -1,6 +1,8 @@
 package com.example.johnpconsidine.snapjack;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,6 +23,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.io.File;
@@ -29,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private String[] mItems;
     private ActionBarDrawerToggle drawerListener;
     private Toolbar mToolbar;
+
+    protected List<ParseObject> mMessages;
 
     protected DialogInterface.OnClickListener mDialogListner =
             new DialogInterface.OnClickListener() {
@@ -185,9 +191,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 super.onDrawerClosed(drawerView);
             }
 
+
+
+
+
         };
 
-
+        //SET FRAGMENT
+        FragmentManager mFragmentManager = getFragmentManager();
+        FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+        InboxFragment mInboxFragment = new InboxFragment();
+        mFragmentTransaction.add(R.id.fragmentHolder, mInboxFragment);
+        mFragmentTransaction.commit();
 
         mDrawerLayout.setDrawerListener(drawerListener);
         getSupportActionBar().setHomeButtonEnabled(true);  //Makes home button clickable
@@ -195,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -245,6 +261,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
             Intent recipientIntent = new Intent(this, RecipientsActivity.class);
             recipientIntent.setData(mMediaUri);
+            String filetype;
+            if (requestCode == PICK_PHOTO_REQUEST || requestCode == TAKE_PHOTO_REQUEST) {
+                filetype = ParseConstants.TYPE_IMAGE;
+            }
+            else {
+                filetype = ParseConstants.TYPE_VIDEO;
+            }
+
+
+            recipientIntent.putExtra(ParseConstants.KEY_FILE_TYPE, filetype);
             startActivity(recipientIntent);
 
         }

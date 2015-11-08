@@ -7,23 +7,36 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.johnpconsidine.snapjack.RecipientsActivity">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:id="@+id/toolbarContainer"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+        <android.support.v7.widget.Toolbar
+            android:minHeight="?android:attr/actionBarSize"
+            android:id="@+id/recipientsToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/sendNow"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_action_send_now"/>
 
-    <android.support.v7.widget.Toolbar
-        android:minHeight="?android:attr/actionBarSize"
-        android:id="@+id/recipientsToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_gradient">
-
-    </android.support.v7.widget.Toolbar>
+        </android.support.v7.widget.Toolbar>
+    </LinearLayout>
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@android:id/list"
-        android:layout_below="@+id/recipientsToolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="false"
+        android:layout_below="@id/toolbarContainer"/>
 
 
 </RelativeLayout>

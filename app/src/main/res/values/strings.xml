@@ -38,4 +38,6 @@
     </string-array>
     <string name="title_activity_recipients">RecipientsActivity</string>
     <string name="choose_friends">Choose Some Friends</string>
+    <string name="send_error">There was an error with the file selected, please select a different file</string>
+    <string name="title_activity_view_image">ViewImageActivity</string>
 </resources>

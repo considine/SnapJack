@@ -7,6 +7,6 @@
         android:id="@+id/send"
         app:showAsAction="ifRoom"
         android:title="send"
-        android:icon="@drawable/ic_action_camera"/>
+        android:icon="@drawable/ic_action_send_now"/>
 
 </menu>
